@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Messages
+{% endblock %}
+
+{% block main %}
+    <div class="center-div">
+        <div class="list-group-item view-email">
+            <strong>Sender:</strong> {{ message_detail.sender}}
+        </div>
+        <div class="list-group-item view-email">
+            <strong>To:</strong> {{ message_detail.recipient}}
+        </div>
+        <div class="list-group-item view-email">
+            <strong>Subject:</strong> {{ message_detail.subject}}
+        </div>
+        <div class="list-group-item view-email">
+            <strong>Timestamp:</strong> {{ message_detail.timestamp}}
+        </div>
+        <div class="list-group-item view-email">
+            <strong>Body:</strong> {{ message_detail.body}}
+        </div>
+        <div class="my-3">
+            <form action="/reply" method="post">
+                <input type="hidden" name="message_id" value=" {{ message_detail.id }}">
+                <input type="submit" class="btn btn-success" value="Reply">
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
